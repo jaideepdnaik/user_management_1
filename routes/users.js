@@ -8,6 +8,13 @@ const cookieParser = require('cookie-parser');
 
 const router = express.Router();
 
+const DATA_FILE = path.join(__dirname, "../data/users.json");
+
+function readData() {
+    const data = fs.readFileSync(DATA_FILE);
+    return JSON.parse(data);
+}
+
 router.use(cookieParser());
 // Function to get the list of users from users.json
 const getUsers = () => {
@@ -32,12 +39,20 @@ const saveUsers = (users) => {
 };
 
 const isAdmin = (req, res, next) => {
-    if (req.cookies.token && req.cookies.token === 'mySuperSecretKey') {
-        console.log(token);
-        next();
-    } else {
-        res.status(403).send("Access Denied!!!");
+    const token = req.cookies.token;
+    if (!token) {
+        return res.redirect('/login');
     }
+
+    const users = readData();
+    const user = users.find(u => u.token === token);
+
+    if (!user || !user.isAdmin) {
+        return res.status(403).send("Access Denied!!!");
+    }
+
+    req.user = user;
+    next();
 };
 
 // View the users
@@ -50,7 +65,7 @@ router.get("/", isAdmin, (req, res) => {
 router.get("/new", (req, res) => {
     res.render("new.ejs");
 });
-router.post("/new", async (req, res) => {
+router.post("/new", async(req, res) => {
     let { username, email, password } = req.body;
     let users = getUsers();
     let id = uuidv4();
@@ -76,7 +91,7 @@ router.get("/:id/edit", verifyToken, (req, res) => {
     }
     res.render("edit.ejs", { user, token: req.cookies.token });
 });
-router.patch("/:id", verifyToken, async (req, res) => {
+router.patch("/:id", verifyToken, async(req, res) => {
     let { id } = req.params;
     let { username, password } = req.body;
     let users = getUsers();
@@ -97,7 +112,7 @@ router.get("/:id/delete", verifyToken, (req, res) => {
     let user = users.find(u => u.id === id);
     res.render("delete.ejs", { user });
 });
-router.delete("/:id", verifyToken, async (req, res) => {
+router.delete("/:id", verifyToken, async(req, res) => {
     let { id } = req.params;
     let { password } = req.body;
     let users = getUsers();
