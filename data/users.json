@@ -1,0 +1,41 @@
+[
+  {
+    "id": "5936cbda-3361-460a-8309-6f6a3818781d",
+    "username": "admin",
+    "email": "admin@gmail.com",
+    "isAdmin": true,
+    "password": "a98e8b2c0233c724f2c6adc25911608b2104ed11c979f4750fcc4d095cd24219",
+    "salt": "c1534f24e83d9437417af2ea97d00791",
+    "token": "1e869b6d71d1f085dd31eca548a5c64ef4e00cacab1a067e12642045bcf05e537a2075c46f5a6ef3762313d1e5fa1d8f"
+  },
+  {
+    "id": "c1812c49-abc6-4b0e-a669-b5ad3a0a3571",
+    "username": "jaideep",
+    "email": "jaideep@gmail.com",
+    "password": "e70e1dcc313447cc55808ae78a44ba858858f96206ba0a781d8ed288196a274b",
+    "salt": "a5804da6de715eb1cee5f4b21a1f5753",
+    "token": "c8161cfbfb6eaf3217b59f048da2b5e728d21328738508f7c1d0b04538158701bd339e39968ba9f5d2f38491e2de72e7"
+  },
+  {
+    "id": "7bc8c33f-8352-4490-9854-535f7889ae23",
+    "username": "nishanthkulal",
+    "email": "nish@gmail.com",
+    "password": "7d68237dea55681d2ce0e50e489db2f4db604f6428b7de3c7ef953cded3449ff",
+    "salt": "c0f12e753761e0a338b173f8938823b5"
+  },
+  {
+    "id": "61ea98cc-99fc-46f0-a0c4-5f091f13d11c",
+    "username": "manishanu",
+    "email": "manish@gmail.com",
+    "password": "c0673da06f22c0c3ee81a4ccfb8d19348f03e09d4e676994e7d1e8698f90ca7d",
+    "salt": "094a79f1110226d124979dd123d9227c"
+  },
+  {
+    "id": "cd68cf54-4a06-4d06-8b69-62f019f22db1",
+    "username": "adhithya",
+    "email": "adhi@gmail.com",
+    "password": "6aebdc6db3c7088878c204dbd023df1a9be39008048cd67840de2d3032fc46fa",
+    "salt": "92ea9b02aec56f59e42121581ee22d98",
+    "token": "9dce93d093e0771032f10ee33bd07b44ff9e6f28ada48f5afadecfe81adfcfe45bbf10ea3c01e50ac5d7f1ed039f6fc2"
+  }
+]

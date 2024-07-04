@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <script>
+        // Check for the message query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get('message');
+        if (message) {
+            alert(message);
+        }
+    </script>
+    <h1>Login</h1>
+    <form action="/doLogin" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+
+    <% if (typeof user !== 'undefined' ) { %>
+        <% if (user.isAdmin) { %>
+            <h2>Welcome Admin!</h2>
+            <p>You are logged in successfully. You can view and manage the list of users.</p>
+            <p>User token : <%= user.token %></p>
+            <a href="/user">View Users</a>
+        <% } else { %>
+            <h2>Welcome <%= user.username %>!</h2>
+            <p>Logged in successfully</p>
+            <p>User token : <%= user.token %></p>
+            <a href="/user/<%= user.id %>/edit">Edit Username</a>
+        <% } %>
+    <% } %>
+
+</body>
+
+</html>
