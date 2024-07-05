@@ -4,7 +4,6 @@ const fs = require("fs");
 const { v4: uuidv4 } = require('uuid');
 const { generateSalt, hashPassword, comparePassword } = require('../crypto');
 const verifyToken = require("../auth");
-const cookieParser = require('cookie-parser');
 
 const router = express.Router();
 
@@ -15,7 +14,7 @@ function readData() {
     return JSON.parse(data);
 }
 
-router.use(cookieParser());
+
 // Function to get the list of users from users.json
 const getUsers = () => {
     try {
@@ -85,17 +84,16 @@ router.get("/:id/edit", verifyToken, (req, res) => {
         res.status(404).send("User not found");
         return;
     }
-    if (req.cookies.token !== user.token) {
-        res.status(403).send("Access Denied");
-        return;
-    }
-    res.render("edit.ejs", { user, token: req.cookies.token });
+    res.render("edit.ejs", { user });
 });
 router.patch("/:id", verifyToken, async(req, res) => {
     let { id } = req.params;
     let { username, password } = req.body;
     let users = getUsers();
     let user = users.find(u => u.id === id);
+    if (!user) {
+        return res.status(404).send("User not found");
+    }
     if (comparePassword(password, user.salt, user.password)) {
         user.username = username;
         saveUsers(users);

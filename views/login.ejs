@@ -18,7 +18,8 @@
         }
     </script>
     <h1>Login</h1>
-    <form action="/doLogin" method="post">
+
+    <form action="/doLogin" method="post" id="loginForm">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <br>
@@ -28,20 +29,7 @@
         <button type="submit">Login</button>
     </form>
 
-    <% if (typeof user !== 'undefined' ) { %>
-        <% if (user.isAdmin) { %>
-            <h2>Welcome Admin!</h2>
-            <p>You are logged in successfully. You can view and manage the list of users.</p>
-            <p>User token : <%= user.token %></p>
-            <a href="/user">View Users</a>
-        <% } else { %>
-            <h2>Welcome <%= user.username %>!</h2>
-            <p>Logged in successfully</p>
-            <p>User token : <%= user.token %></p>
-            <a href="/user/<%= user.id %>/edit">Edit Username</a>
-        <% } %>
-    <% } %>
-
+    <script src="/js/login.js"></script>
 </body>
 
 </html>

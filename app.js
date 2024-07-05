@@ -4,12 +4,10 @@ const methodOverride = require('method-override');
 const path = require("path");
 const crypto = require("crypto");
 const { comparePassword } = require('./crypto');
-const cookieParser = require('cookie-parser');
 const app = express();
 
 const DATA_FILE = path.join(__dirname, "./data/users.json");
 
-app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -38,20 +36,26 @@ app.post("/doLogin", async (req, res) => {
     if (user && comparePassword(password, user.salt, user.password)) {
         const token = generateToken();
         user.token = token;
-        // if (user.isAdmin) {
-        //     user.isAdmin = true;
-        // }
         writeData(users);
-        res.cookie('token', token, { httpOnly: true });
-        res.redirect(`/loginSuccess?user=${encodeURIComponent(JSON.stringify(user))}`);
+        res.json({ token, user });
     } else {
-        res.send("Login Failed");
+        res.status(401).json({ message : "Login Failed" });
     }
 });
 
 app.get("/loginSuccess", (req, res) => {
-    const user = JSON.parse(decodeURIComponent(req.query.user));
-    res.render("login.ejs", { user });
+    const userParam = req.query.user;
+    let user;
+    if (userParam) {
+        try {
+            user = JSON.parse(userParam);
+        } catch(error) {
+            res.status(400).json({ message: "Invalid user data" });
+        }
+    } else {
+        res.status(400).json({ message: "No user data" });
+    }
+    res.render("loginSuccess.ejs", { user });
 });
 
 // Logout route

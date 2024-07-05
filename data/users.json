@@ -6,7 +6,7 @@
     "isAdmin": true,
     "password": "a98e8b2c0233c724f2c6adc25911608b2104ed11c979f4750fcc4d095cd24219",
     "salt": "c1534f24e83d9437417af2ea97d00791",
-    "token": "c69c0dcb70ae91e71dc9db24722ff56ae0fa5bb1b0650e37dd77aaf1fb57a16433ea459faed39ab1b7d1d43474d76fbe"
+    "token": "e0436882fc74ff5105bd3467e5f051ef6eab808e027669dc081fc7c7453e2f4684bb80e3d533008afefa6ddf45cae9b1"
   },
   {
     "id": "c1812c49-abc6-4b0e-a669-b5ad3a0a3571",
@@ -14,7 +14,7 @@
     "email": "jaideep@gmail.com",
     "password": "e70e1dcc313447cc55808ae78a44ba858858f96206ba0a781d8ed288196a274b",
     "salt": "a5804da6de715eb1cee5f4b21a1f5753",
-    "token": "f746e9d34e738e9ede091d9c8b8fa3eaa69fb821a92b08843d1fe3e1d4baa541fe99bd945d4f0095b597319e1dee9408"
+    "token": "e948da315eb90d672f33f0f3246ac9d2b0cffc76f2cba91df748998bfb643590271dcd1ec5bef06c641da40940ba5a27"
   },
   {
     "id": "7bc8c33f-8352-4490-9854-535f7889ae23",
@@ -28,14 +28,7 @@
     "username": "manishanu",
     "email": "manish@gmail.com",
     "password": "c0673da06f22c0c3ee81a4ccfb8d19348f03e09d4e676994e7d1e8698f90ca7d",
-    "salt": "094a79f1110226d124979dd123d9227c"
-  },
-  {
-    "id": "cd68cf54-4a06-4d06-8b69-62f019f22db1",
-    "username": "adhithya",
-    "email": "adhi@gmail.com",
-    "password": "6aebdc6db3c7088878c204dbd023df1a9be39008048cd67840de2d3032fc46fa",
-    "salt": "92ea9b02aec56f59e42121581ee22d98",
-    "token": "9dce93d093e0771032f10ee33bd07b44ff9e6f28ada48f5afadecfe81adfcfe45bbf10ea3c01e50ac5d7f1ed039f6fc2"
+    "salt": "094a79f1110226d124979dd123d9227c",
+    "token": "ee5c2e4ee316057e74d5ab6ba04a0677e25c98d74b79f8181948dbc41797dae98331e59d5365a86b247e339b752019d7"
   }
 ]

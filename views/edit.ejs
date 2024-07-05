@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
   <title>Edit User</title>
 </head>
+
 <body>
   <h1>Edit User</h1>
   <form action="/user/<%= user.id %>?_method=PATCH" method="POST" id="editUserForm">
@@ -13,9 +15,59 @@
     <input type="text" id="username" name="username" value="<%= user.username %>">
     <label for="password">Confirm Password:</label>
     <input type="password" id="password" name="password">
-    <!-- <input type="hidden" name="token" value="<%= token %>"> Hidden input for token -->
     <button type="submit">Update</button>
   </form>
-  <!-- <a href="/user">Back to Users</a> -->
+  <script>
+
+    async function fetchWithToken(url, options = {}) {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token found');
+      }
+
+      const headers = options.headers || {};
+      headers['Authorization'] = token;
+      options.headers = headers;
+
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      return response.json();
+    }
+
+    document.getElementById('editUserForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Unauthorized access!');
+        window.location.href = '/login';
+        return;
+      }
+
+      const formData = new formData(this);
+      const response = await fetch(`/user/<%= user.id %>?_method=PATCH`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+        },
+        body: JSON.stringify({
+          username: formData.get('username'),
+          password: formData.get('password')
+        })
+      });
+
+      if (response.ok) {
+        window.location.href = '/login?message=Username updated. Please login again.';
+      } else {
+        const data = await response.json();
+        alert(data.message || 'Update Failed');
+      }
+    })
+  </script>
 </body>
+
 </html>

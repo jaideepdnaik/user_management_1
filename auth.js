@@ -9,15 +9,15 @@ function readData() {
 }
 
 const verifyToken = (req, res, next) => {
-    const token = req.cookies.token;
+    const token = req.headers['authorization'];
     if (!token) {
-        return res.redirect('/login');
+        return res.status(401).json({ message : 'Unauthorized' });
     }
 
     const users = readData();
     const user = users.find(u => u.token === token);
     if (!user) {
-        return res.redirect('/login');
+        return res.status(401).json({ message : 'Access denied'});
     }
 
     req.user = user;
