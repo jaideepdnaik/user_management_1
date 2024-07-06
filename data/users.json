@@ -6,7 +6,7 @@
     "isAdmin": true,
     "password": "a98e8b2c0233c724f2c6adc25911608b2104ed11c979f4750fcc4d095cd24219",
     "salt": "c1534f24e83d9437417af2ea97d00791",
-    "token": "e0436882fc74ff5105bd3467e5f051ef6eab808e027669dc081fc7c7453e2f4684bb80e3d533008afefa6ddf45cae9b1"
+    "token": "b9ea4b27e310266523ffc26d0bc8b951b2f85193101e3e33ddbfd985886de7c2057c72f308cc6fe6ca760067ba0574fd"
   },
   {
     "id": "c1812c49-abc6-4b0e-a669-b5ad3a0a3571",
@@ -14,7 +14,7 @@
     "email": "jaideep@gmail.com",
     "password": "e70e1dcc313447cc55808ae78a44ba858858f96206ba0a781d8ed288196a274b",
     "salt": "a5804da6de715eb1cee5f4b21a1f5753",
-    "token": "e948da315eb90d672f33f0f3246ac9d2b0cffc76f2cba91df748998bfb643590271dcd1ec5bef06c641da40940ba5a27"
+    "token": "0fc1d0596a3bed706c0d4a8526e288599c7f81c9fedd40a9a5553187cb08af9b45de45005465fbe4d8494a709f2de99f"
   },
   {
     "id": "7bc8c33f-8352-4490-9854-535f7889ae23",

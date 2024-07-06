@@ -38,7 +38,7 @@ const saveUsers = (users) => {
 };
 
 const isAdmin = (req, res, next) => {
-    const token = req.cookies.token;
+    const token = req.query.token;
     if (!token) {
         return res.redirect('/login');
     }
